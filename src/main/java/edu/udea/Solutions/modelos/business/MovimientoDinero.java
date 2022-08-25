@@ -1,4 +1,4 @@
-package edu.udea.Solutions.modelos;
+package edu.udea.Solutions.modelos.business;
 
 public class MovimientoDinero {
     private Float monto;
