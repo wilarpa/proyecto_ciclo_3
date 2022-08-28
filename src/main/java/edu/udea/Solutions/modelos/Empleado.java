@@ -1,31 +1,51 @@
 package edu.udea.Solutions.modelos;
 
 public class Empleado {
-    long id;
-    string email;
-    updatedAt
 
-    public long getId() {
-        return id;
+    private String nombre;
+    private String correo;
+    private String empresa;
+    private String rol;
+
+    public Empleado(String nombre, String correo, String empresa, String rol) {
+        this.nombre = nombre;
+        this.correo = correo;
+        this.empresa = empresa;
+        this.rol = rol;
     }
 
-    public void setId(long id) {
-        this.id = id;
+    public Empleado() {
     }
 
-    public string getEmail() {
-        return email;
+    public String getNombre() {
+        return nombre;
     }
 
-    public void setEmail(string email) {
-        this.email = email;
+    public void setNombre(String nombre) {
+        this.nombre = nombre;
     }
 
-    public Empleado(long id, string email) {
-        this.id = id;
-        this.email = email;
+    public String getCorreo() {
+        return correo;
     }
 
+    public void setCorreo(String correo) {
+        this.correo = correo;
+    }
 
+    public String getEmpresa() {
+        return empresa;
+    }
 
+    public void setEmpresa(String empresa) {
+        this.empresa = empresa;
+    }
+
+    public String getRol() {
+        return rol;
+    }
+
+    public void setRol(String rol) {
+        this.rol = rol;
+    }
 }
