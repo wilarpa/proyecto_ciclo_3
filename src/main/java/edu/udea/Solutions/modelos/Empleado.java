@@ -1,28 +1,41 @@
 package edu.udea.Solutions.modelos;
 
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.ManyToOne;
+import java.util.Date;
+@Entity
 public class Empleado {
 
-    private String nombre;
-    private String correo;
-    private String empresa;
-    private String rol;
+    @Id
+    private long id;
 
-    public Empleado(String nombre, String correo, String empresa, String rol) {
-        this.nombre = nombre;
+    @Column(unique = true)
+    private String correo;
+
+    @ManyToOne
+    private Empresa empresa;
+
+    private Date updateAt;
+    private Date createdAt;
+    private enum rol{
+    }
+
+    public Empleado(long id, String correo, Empresa empresa, Date updateAt, Date createdAt) {
+        this.id = id;
         this.correo = correo;
         this.empresa = empresa;
-        this.rol = rol;
+        this.updateAt = updateAt;
+        this.createdAt = createdAt;
     }
 
-    public Empleado() {
+    public long getId() {
+        return id;
     }
 
-    public String getNombre() {
-        return nombre;
-    }
-
-    public void setNombre(String nombre) {
-        this.nombre = nombre;
+    public void setId(long id) {
+        this.id = id;
     }
 
     public String getCorreo() {
@@ -33,19 +46,27 @@ public class Empleado {
         this.correo = correo;
     }
 
-    public String getEmpresa() {
+    public Empresa getEmpresa() {
         return empresa;
     }
 
-    public void setEmpresa(String empresa) {
+    public void setEmpresa(Empresa empresa) {
         this.empresa = empresa;
     }
 
-    public String getRol() {
-        return rol;
+    public Date getUpdateAt() {
+        return updateAt;
     }
 
-    public void setRol(String rol) {
-        this.rol = rol;
+    public void setUpdateAt(Date updateAt) {
+        this.updateAt = updateAt;
+    }
+
+    public Date getCreatedAt() {
+        return createdAt;
+    }
+
+    public void setCreatedAt(Date createdAt) {
+        this.createdAt = createdAt;
     }
 }
