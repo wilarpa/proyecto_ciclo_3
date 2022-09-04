@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"> <!-- enlaza a Thymeleaf -->
+<head>
+    <meta charset="UTF-8">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+    <title>Listado de Empresas</title>
+</head>
+<body>
+<div class="container-fluid">
+    <h1> Lista de Empresas</h1>
+
+    <table class="table">
+        <!-- diseño tabla -->
+        <tr>
+            <th>ID</th>
+            <th>Nombre</th>
+            <th>Dirección</th>
+            <th>Teléfono</th>
+            <th>Nit</th>
+            <th>Editar</th>
+            <th>Eliminar</th>
+        </tr>
+        <!-- dilegneciar tabla -->
+        <!-- se traen los datos desde el controlador -->
+        <tr th:each="empresa : ${emplist}">
+            <td th:text="${empresa.id}"></td>
+            <td th:text="${empresa.nombre}"></td>
+            <td th:text="${empresa.direccion}"></td>
+            <td th:text="${empresa.telefono}"></td>
+            <td th:text="${empresa.NIT}"></td>
+            <td><button type="button"></td>
+
+
+        </tr>
+
+
+    </table>
+</div>
+
+
+
+</body>
+</html>

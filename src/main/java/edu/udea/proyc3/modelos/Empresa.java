@@ -1,22 +1,22 @@
-package edu.udea.Solutions.modelos;
-
+package edu.UdeA.proyc3.modelos;
 
 import javax.persistence.*;
+import javax.persistence.Entity;
 
-@Entity
-@Table(name = "Empresa")
+@Entity //para relacionar la clase a crear con una base de datos (anotaciones)
+@Table(name="Empresa") // relaciona la entidad con la tabla en BD
+
 public class Empresa {
-
-    @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @Id // identifica la clave primaria
+    @GeneratedValue(strategy = GenerationType.AUTO)//define el Id como autoincrementado
     private int id;
+
     private String nombre;
     private String direccion;
     private String telefono;
     private String NIT;
 
-
-    public Empresa() {
+    public Empresa(){;
     }
 
     public Empresa(String nombre, String direccion, String telefono, String NIT) {
@@ -24,6 +24,7 @@ public class Empresa {
         this.direccion = direccion;
         this.telefono = telefono;
         this.NIT = NIT;
+        //no se genera constructor de Id pues ya se mencionó (construyó) anteriomente como autoincrementado.
     }
 
     public int getId() {
