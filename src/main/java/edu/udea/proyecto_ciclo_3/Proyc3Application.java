@@ -1,10 +1,9 @@
-package edu.UdeA.proyc3;
-import edu.UdeA.proyc3.modelos.Empresa;
+package edu.UdeA.proyecto_ciclo_3;
+import edu.UdeA.proyecto_ciclo_3.modelos.Empresa;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.autoconfigure.security.servlet.SecurityAutoConfiguration;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RestController;
 
 
 @SpringBootApplication (exclude = {SecurityAutoConfiguration.class})

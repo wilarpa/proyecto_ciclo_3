@@ -1,6 +1,6 @@
-package edu.UdeA.proyc3.repo;
+package edu.UdeA.proyecto_ciclo_3.repo;
 
-import edu.UdeA.proyc3.modelos.Empresa;
+import edu.UdeA.proyecto_ciclo_3.modelos.Empresa;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 

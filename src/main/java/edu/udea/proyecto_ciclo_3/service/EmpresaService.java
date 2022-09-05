@@ -1,7 +1,7 @@
-package edu.UdeA.proyc3.service;
+package edu.UdeA.proyecto_ciclo_3.service;
 
-import edu.UdeA.proyc3.modelos.Empresa;
-import edu.UdeA.proyc3.repo.EmpresaRepository;
+import edu.UdeA.proyecto_ciclo_3.modelos.Empresa;
+import edu.UdeA.proyecto_ciclo_3.repo.EmpresaRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

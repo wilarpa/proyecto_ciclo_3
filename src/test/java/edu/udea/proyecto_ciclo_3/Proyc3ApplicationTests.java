@@ -1,4 +1,4 @@
-package edu.UdeA.proyc3;
+package edu.UdeA.proyecto_ciclo_3;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;

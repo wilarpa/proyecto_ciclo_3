@@ -1,4 +1,4 @@
-package edu.UdeA.proyc3.modelos;
+package edu.UdeA.proyecto_ciclo_3.modelos;
 
 import javax.persistence.*;
 import javax.persistence.Entity;
