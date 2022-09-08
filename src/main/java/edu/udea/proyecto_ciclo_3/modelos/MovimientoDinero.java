@@ -1,6 +1,9 @@
 package edu.UdeA.proyecto_ciclo_3.modelos;
 
+import org.springframework.format.annotation.DateTimeFormat;
+
 import javax.persistence.*;
+import java.util.Date;
 
 @Entity //para relacionar la clase a crear con una base de datos (anotaciones)
 @Table
@@ -14,13 +17,17 @@ public class MovimientoDinero {
     @JoinColumn(name = "usuario_id")
     private Empleado usuario;
 
+    @DateTimeFormat(pattern="yyyy-MM-dd")
+    private Date fecha;
+
     public MovimientoDinero() {
     }
 
-    public MovimientoDinero(int id, long monto, String concepto, Empleado usuario) {
+    public MovimientoDinero(long monto, String concepto, Empleado empleado, Date fecha) {
         this.monto = monto;
         this.concepto = concepto;
-        this.usuario = usuario;
+        this.usuario = empleado;
+        this.fecha=fecha;
     }
 
     public int getId() {
@@ -51,9 +58,15 @@ public class MovimientoDinero {
         return usuario;
     }
 
-    public void setUsuario(Empleado usuario) {
-        this.usuario = usuario;
+    public void setUsuario(Empleado empleado) {
+        this.usuario = empleado;
     }
 
+    public Date getFecha() {
+        return fecha;
+    }
 
+    public void setFecha(Date fecha) {
+        this.fecha = fecha;
+    }
 }
