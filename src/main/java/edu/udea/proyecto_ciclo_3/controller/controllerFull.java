@@ -1,6 +1,6 @@
-package edu.UdeA.proyecto_ciclo_3.controller;
+package edu.udea.proyecto_ciclo_3.controller;
 
-import edu.UdeA.proyecto_ciclo_3.modelos.Empresa;
+import edu.udea.proyecto_ciclo_3.modelos.Empresa;
 import edu.UdeA.proyecto_ciclo_3.service.EmpresaService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
