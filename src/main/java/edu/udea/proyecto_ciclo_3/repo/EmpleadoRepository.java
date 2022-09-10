@@ -1,6 +1,6 @@
-package edu.UdeA.proyecto_ciclo_3.repo;
+package edu.udea.proyecto_ciclo_3.repo;
 
-import edu.UdeA.proyecto_ciclo_3.modelos.Empleado;
+import edu.udea.proyecto_ciclo_3.modelos.Empleado;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;

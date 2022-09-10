@@ -10,6 +10,8 @@ public class Empleado {
     private int id;
     private String nombre;
     private String correo;
+
+
     @ManyToOne
     @JoinColumn(name = "empresa_id") //establezco la relación de muchos (empleados ) a uno (Empresa)
     private Empresa empresa;
@@ -25,6 +27,7 @@ public class Empleado {
         this.empresa = empresa;
         this.rol = rol;
     }
+
 
     public int getId() {
         return id;
