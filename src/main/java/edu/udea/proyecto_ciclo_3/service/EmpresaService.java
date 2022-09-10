@@ -8,16 +8,16 @@ import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
 import java.util.List;
-//Le decimos a Spring que esta clase es de servicios
+
 @Service
 public class EmpresaService {
-    @Autowired //Conectamos esta clase con el repository de Empresa
-    EmpresaRepository empresaRepository; //Creamos un objeto tipo EmpresaRepository para poder usar los metodos que dicha clase hereda
+    @Autowired
+    EmpresaRepository empresaRepository;
 
-    //Metodo que retornará la lista de empresas usando metodos heredados del jpaRepository
+
     public List<Empresa> getAllEmpresas(){
         List<Empresa> empresaList = new ArrayList<>();
-        empresaRepository.findAll().forEach(empresa -> empresaList.add(empresa));  //Recorremos el iterable que regresa el metodo findAll del Jpa y lo guardamos en la lista creada
+        empresaRepository.findAll().forEach(empresa -> empresaList.add(empresa));
         return empresaList;
     }
 

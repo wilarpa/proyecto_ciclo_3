@@ -13,9 +13,9 @@ public class MovimientosService {
     @Autowired
     MovimientosRepository movimientosRepository;
 
-    public List<MovimientoDinero> getAllMovimientos(){ //Metodo que me muestra todos los movimientos sin ningn filtro
+    public List<MovimientoDinero> getAllMovimientos(){
         List<MovimientoDinero> movimientosList = new ArrayList<>();
-        movimientosRepository.findAll().forEach(movimiento -> movimientosList.add(movimiento));  //Recorremos el iterable que regresa el metodo findAll del Jpa y lo guardamos en la lista creada
+        movimientosRepository.findAll().forEach(movimiento -> movimientosList.add(movimiento));
         return movimientosList;
     }
 
@@ -23,7 +23,7 @@ public class MovimientosService {
         return movimientosRepository.findById(id).get();
     }
 
-    public boolean saveOrUpdateMovimiento(MovimientoDinero movimientoDinero){ //Guardar o actualizar elementos
+    public boolean saveOrUpdateMovimiento(MovimientoDinero movimientoDinero){
         MovimientoDinero mov=movimientosRepository.save(movimientoDinero);
         if (movimientosRepository.findById(mov.getId())!=null){
             return true;
@@ -31,7 +31,7 @@ public class MovimientosService {
         return false;
     }
 
-    public boolean deleteMovimiento(Integer id){ //Eliminar movimiento por id
+    public boolean deleteMovimiento(Integer id){
         movimientosRepository.deleteById(id); //Eliminar usando el metodo que nos ofrece el repositorio
         if(this.movimientosRepository.findById(id).isPresent()){ //Si al buscar el movimiento lo encontramos, no se eliminó (false)
             return false;

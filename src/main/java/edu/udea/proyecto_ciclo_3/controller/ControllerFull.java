@@ -115,7 +115,7 @@ public class ControllerFull {
     @GetMapping("/EditarEmpleado/{id}")
     public String editarEmpleado(Model model, @PathVariable Integer id, @ModelAttribute("mensaje") String mensaje){
         Empleado empl=empleadoService.getEmpleadoById(id).get();
-        //Creamos un atributo para el modelo, que se llame igualmente empl y es el que ira al html para llenar o alimentar campos
+
         model.addAttribute("empl",empl);
         model.addAttribute("mensaje", mensaje);
         List<Empresa> listaEmpresas= empresaService.getAllEmpresas();
@@ -144,24 +144,24 @@ public class ControllerFull {
         return "redirect:/VerEmpleados";
     }
 
-    @GetMapping("/Empresa/{id}/Empleados") //Filtrar los empleados por empresa
+    @GetMapping("/Empresa/{id}/Empleados") //
     public String verEmpleadosPorEmpresa(@PathVariable("id") Integer id, Model model){
         List<Empleado> listaEmpleados = empleadoService.obtenerPorEmpresa(id);
         model.addAttribute("emplelist",listaEmpleados);
-        return "verEmpleados"; //Llamamos al html con el emplelist de los empleados filtrados
+        return "verEmpleados";
     }
 
 
-    //MOVIMIENTOS
 
-    @GetMapping ("/VerMovimientos")// Controlador que nos lleva al template donde veremos todos los movimientos
+
+    @GetMapping ("/VerMovimientos")
     public String viewMovimientos(Model model, @ModelAttribute("mensaje") String mensaje){
         List<MovimientoDinero> listaMovimientos=movimientosService.getAllMovimientos();
         model.addAttribute("movlist",listaMovimientos);
         model.addAttribute("mensaje",mensaje);
         Long sumaMonto=movimientosService.obtenerSumaMontos();
-        model.addAttribute("SumaMontos",sumaMonto);//Mandamos la suma de todos los montos a la plantilla
-        return "verMovimientos"; //Llamamos al HTML
+        model.addAttribute("SumaMontos",sumaMonto);
+        return "verMovimientos";
     }
 
     @GetMapping("/AgregarMovimiento") //Controlador que nos lleva al template donde podremos crear un nuevo movimiento
@@ -171,7 +171,7 @@ public class ControllerFull {
         model.addAttribute("mensaje",mensaje);
         List<Empleado> listaEmpleados= empleadoService.getAllEmpleado();
         model.addAttribute("emplelist",listaEmpleados);
-        return "agregarMovimiento"; //Llamar HTML
+        return "agregarMovimiento";
     }
 
     @PostMapping("/GuardarMovimiento")
@@ -216,7 +216,7 @@ public class ControllerFull {
         return "redirect:/VerMovimientos";
     }
 
-    @GetMapping("/Empleado/{id}/Movimientos") //Filtro de movimientos por empleados
+    @GetMapping("/Empleado/{id}/Movimientos")
     public String movimientosPorEmpleado(@PathVariable("id")Integer id, Model model){
         List<MovimientoDinero> movlist = movimientosService.obtenerPorEmpleado(id);
         model.addAttribute("movlist",movlist);
@@ -225,12 +225,12 @@ public class ControllerFull {
         return "verMovimientos"; //Llamamos al HTML
     }
 
-    @GetMapping("/Empresa/{id}/Movimientos") //Filtro de movimientos por empresa
+    @GetMapping("/Empresa/{id}/Movimientos")
     public String movimientosPorEmpresa(@PathVariable("id")Integer id, Model model){
         List<MovimientoDinero> movlist = movimientosService.obtenerPorEmpresa(id);
         model.addAttribute("movlist",movlist);
         Long sumaMonto=movimientosService.MontosPorEmpresa(id);
         model.addAttribute("SumaMontos",sumaMonto);
-        return "verMovimientos"; //Llamamos al HTML
+        return "verMovimientos";
     }
 }
