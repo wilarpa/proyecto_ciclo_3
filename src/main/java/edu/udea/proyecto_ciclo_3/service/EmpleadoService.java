@@ -1,8 +1,8 @@
-package edu.UdeA.proyecto_ciclo_3.service;
+package edu.udea.proyecto_ciclo_3.service;
 
 
-import edu.UdeA.proyecto_ciclo_3.modelos.Empleado;
-import edu.UdeA.proyecto_ciclo_3.repo.EmpleadoRepository;
+import edu.udea.proyecto_ciclo_3.modelos.Empleado;
+import edu.udea.proyecto_ciclo_3.repo.EmpleadoRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

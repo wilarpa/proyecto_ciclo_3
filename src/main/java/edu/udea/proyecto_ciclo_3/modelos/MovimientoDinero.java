@@ -1,4 +1,4 @@
-package edu.UdeA.proyecto_ciclo_3.modelos;
+package edu.udea.proyecto_ciclo_3.modelos;
 
 import org.springframework.format.annotation.DateTimeFormat;
 

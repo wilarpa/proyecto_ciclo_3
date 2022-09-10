@@ -1,10 +1,10 @@
-package edu.UdeA.proyecto_ciclo_3.controller;
-import edu.UdeA.proyecto_ciclo_3.modelos.Empleado;
-import edu.UdeA.proyecto_ciclo_3.modelos.Empresa;
-import edu.UdeA.proyecto_ciclo_3.modelos.MovimientoDinero;
-import edu.UdeA.proyecto_ciclo_3.service.EmpleadoService;
-import edu.UdeA.proyecto_ciclo_3.service.EmpresaService;
-import edu.UdeA.proyecto_ciclo_3.service.MovimientosService;
+package edu.udea.proyecto_ciclo_3.controller;
+import edu.udea.proyecto_ciclo_3.modelos.Empleado;
+import edu.udea.proyecto_ciclo_3.modelos.Empresa;
+import edu.udea.proyecto_ciclo_3.modelos.MovimientoDinero;
+import edu.udea.proyecto_ciclo_3.service.EmpleadoService;
+import edu.udea.proyecto_ciclo_3.service.EmpresaService;
+import edu.udea.proyecto_ciclo_3.service.MovimientosService;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import org.springframework.stereotype.Controller;

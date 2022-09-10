@@ -1,6 +1,6 @@
-package edu.UdeA.proyecto_ciclo_3.repo;
+package edu.udea.proyecto_ciclo_3.repo;
 
-import edu.UdeA.proyecto_ciclo_3.modelos.MovimientoDinero;
+import edu.udea.proyecto_ciclo_3.modelos.MovimientoDinero;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;
