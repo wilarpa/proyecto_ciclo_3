@@ -7,6 +7,7 @@ import edu.udea.proyecto_ciclo_3.service.EmpresaService;
 import edu.udea.proyecto_ciclo_3.service.MovimientosService;
 import org.springframework.beans.factory.annotation.Autowired;
 
+import org.springframework.context.annotation.Bean;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
@@ -233,4 +234,11 @@ public class ControllerFull {
         model.addAttribute("SumaMontos",sumaMonto);
         return "verMovimientos";
     }
-}
+
+
+
+    //Metodo para encriptar contraseñas
+
+    }
+
+

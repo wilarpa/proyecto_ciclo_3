@@ -6,7 +6,7 @@ import org.springframework.boot.autoconfigure.security.servlet.SecurityAutoConfi
 import org.springframework.web.bind.annotation.GetMapping;
 
 
-@SpringBootApplication (exclude = {SecurityAutoConfiguration.class})
+@SpringBootApplication
 public class Proyc3Application {
 	@GetMapping("/saludo")
 	public String hello(){
