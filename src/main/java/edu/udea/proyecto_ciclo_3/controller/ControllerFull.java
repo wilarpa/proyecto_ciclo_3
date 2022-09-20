@@ -2,12 +2,22 @@ package edu.udea.proyecto_ciclo_3.controller;
 import edu.udea.proyecto_ciclo_3.modelos.Empleado;
 import edu.udea.proyecto_ciclo_3.modelos.Empresa;
 import edu.udea.proyecto_ciclo_3.modelos.MovimientoDinero;
+import edu.udea.proyecto_ciclo_3.repo.MovimientosRepository;
+
 import edu.udea.proyecto_ciclo_3.service.EmpleadoService;
 import edu.udea.proyecto_ciclo_3.service.EmpresaService;
 import edu.udea.proyecto_ciclo_3.service.MovimientosService;
+
+
 import org.springframework.beans.factory.annotation.Autowired;
 
 import org.springframework.context.annotation.Bean;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
@@ -105,6 +115,8 @@ public class ControllerFull {
 
     @PostMapping("/GuardarEmpleado")
     public String guardarEmpleado(Empleado empl, RedirectAttributes redirectAttributes){
+        String passEncriptada=passwordEncoder().encode(empl.getPassword());
+        empl.setPassword((passEncriptada));
         if(empleadoService.saveOrUpdateEmpleado(empl)==true){
             redirectAttributes.addFlashAttribute("mensaje","saveOK");
             return "redirect:/VerEmpleados";
@@ -126,6 +138,9 @@ public class ControllerFull {
 
     @PostMapping("/ActualizarEmpleado")
     public String updateEmpleado(@ModelAttribute("empl") Empleado empl, RedirectAttributes redirectAttributes){
+        String passEncriptada=passwordEncoder().encode(empl.getPassword());
+        empl.setPassword((passEncriptada));
+
         if(empleadoService.saveOrUpdateEmpleado(empl)){
             redirectAttributes.addFlashAttribute("mensaje","updateOK");
             return "redirect:/VerEmpleados";
@@ -153,36 +168,39 @@ public class ControllerFull {
     }
 
 
-
+//movimientos
 
     @GetMapping ("/VerMovimientos")
     public String viewMovimientos(Model model, @ModelAttribute("mensaje") String mensaje){
         List<MovimientoDinero> listaMovimientos=movimientosService.getAllMovimientos();
         model.addAttribute("movlist",listaMovimientos);
         model.addAttribute("mensaje",mensaje);
-        Long sumaMonto=movimientosService.obtenerSumaMontos();
-        model.addAttribute("SumaMontos",sumaMonto);
         return "verMovimientos";
     }
+
 
     @GetMapping("/AgregarMovimiento") //Controlador que nos lleva al template donde podremos crear un nuevo movimiento
     public String nuevoMovimiento(Model model, @ModelAttribute("mensaje") String mensaje){
         MovimientoDinero movimiento= new MovimientoDinero();
         model.addAttribute("mov",movimiento);
         model.addAttribute("mensaje",mensaje);
-        List<Empleado> listaEmpleados= empleadoService.getAllEmpleado();
-        model.addAttribute("emplelist",listaEmpleados);
-        return "agregarMovimiento";
+        Authentication auth= SecurityContextHolder.getContext().getAuthentication();
+        String correo=auth.getName();
+        Integer idEmpleado=movimientosService.IdPorCorreo(correo);
+        model.addAttribute("idEmpleado",idEmpleado);
+        return "agregarMovimiento"; //Llamar HTML
     }
+
+
 
     @PostMapping("/GuardarMovimiento")
     public String guardarMovimiento(MovimientoDinero mov, RedirectAttributes redirectAttributes){
         if(movimientosService.saveOrUpdateMovimiento(mov)){
             redirectAttributes.addFlashAttribute("mensaje","saveOK");
-            return "redirect:/VerMovimientos";
+            return "redirect:/verMovimientos";
         }
         redirectAttributes.addFlashAttribute("mensaje","saveError");
-        return "redirect:/AgregarMovimiento";
+        return "redirect:/agregarMovimiento";
     }
 
     @GetMapping("/EditarMovimiento/{id}")
@@ -200,10 +218,10 @@ public class ControllerFull {
     public String updateMovimiento(@ModelAttribute("mov") MovimientoDinero mov, RedirectAttributes redirectAttributes){
         if(movimientosService.saveOrUpdateMovimiento(mov)){
             redirectAttributes.addFlashAttribute("mensaje","updateOK");
-            return "redirect:/VerMovimientos";
+            return "redirect:/verMovimientos";
         }
         redirectAttributes.addFlashAttribute("mensaje","updateError");
-        return "redirect:/EditarMovimiemto/"+mov.getId();
+        return "redirect:/editarMovimiemto/"+mov.getId();
 
     }
 
@@ -211,10 +229,10 @@ public class ControllerFull {
     public String eliminarMovimiento(@PathVariable Integer id, RedirectAttributes redirectAttributes){
         if (movimientosService.deleteMovimiento(id)){
             redirectAttributes.addFlashAttribute("mensaje","deleteOK");
-            return "redirect:/VerMovimientos";
+            return "redirect:/verMovimientos";
         }
         redirectAttributes.addFlashAttribute("mensaje", "deleteError");
-        return "redirect:/VerMovimientos";
+        return "redirect:/verMovimientos";
     }
 
     @GetMapping("/Empleado/{id}/Movimientos")
@@ -238,6 +256,11 @@ public class ControllerFull {
 
 
     //Metodo para encriptar contraseñas
+   @Bean
+    public PasswordEncoder passwordEncoder(){
+        return new BCryptPasswordEncoder();
+   }
+
 
     }
 
