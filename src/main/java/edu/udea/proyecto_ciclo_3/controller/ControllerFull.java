@@ -138,6 +138,7 @@ public class ControllerFull {
 
     @PostMapping("/ActualizarEmpleado")
     public String updateEmpleado(@ModelAttribute("empl") Empleado empl, RedirectAttributes redirectAttributes){
+
         String passEncriptada=passwordEncoder().encode(empl.getPassword());
         empl.setPassword((passEncriptada));
 
