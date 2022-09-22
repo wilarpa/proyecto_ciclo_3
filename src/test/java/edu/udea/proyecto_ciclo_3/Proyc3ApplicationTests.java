@@ -1,10 +1,10 @@
-package edu.udea.Solutions;
+package edu.UdeA.proyecto_ciclo_3;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
 @SpringBootTest
-class ApplicationTests {
+class Proyc3ApplicationTests {
 
 	@Test
 	void contextLoads() {
