@@ -10,6 +10,19 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
     <style>
+      a.btn.btn-info:hover{cursor: pointer;
+      transform: scale(1.1);
+      
+
+}
+
+button:hover{
+      cursor: pointer;
+      transform: scale(1.1);
+      
+      }
+
+
     a{
     color:white;
     }
@@ -17,6 +30,69 @@
     color: black;
     text-decoration:none;
     }
+    div.container{margin-top:5%;}
+    body{
+      background-color: #140F28;
+    }
+    h1{
+      color: aqua;
+      margin-bottom: 4vh;
+      margin-top: 4%;
+    }
+    label.col-md-3{
+      color: aqua;
+    }
+    .footer-logo{
+    
+      height: auto;
+      float: right;
+      margin-top: 2px;
+      margin-right: 6vh;
+      margin-bottom: 2%;
+    }
+    img.logo-image{
+      max-width: 150px;
+      height: auto;
+    }
+    .btn.btn-danger{margin-bottom: 3%;}
+    @media (min-width: 268px) and (max-width: 480px) {
+      .footer-logo {
+          clear: both;
+          text-align: center;
+          float: none;
+          
+        }
+        
+
+      }
+      
+      @media (max-width: 767px) {
+        .footer-logo {
+          clear: both;
+          text-align: center;
+          float: none;
+          margin-right: 0%;
+          
+        }
+            }
+            button.btn.btn-success{
+              margin-top: 30px;
+            }
+            .table.table-bordered{
+                background-color: white;
+                
+            }
+            .first-line{
+                background-color: #312659;
+                color: white;
+                text-align: center;
+    
+            }
+            table{border-radius: 6px;
+                border-color: aqua!important;
+            }
+            .contenedor-tabla{border-radius: 2px;
+            border-color: aqua;}
 </style>
 </head>
 <body>
@@ -26,17 +102,23 @@
 
     <h1> Lista de Empleados</h1>
     <!--Dibujamos la tabla-->
-    <br><table class="table table-bordered">
-    <tr>
+    <br>
+    <div class="contenedor-tabla">
+    <table class="table table-bordered">
+    <tr class=" first-line">
         <th>ID</th>
         <th>Nombre</th>
         <th>Correo</th>
         <th>Empresa</th>
-        <th>Rol</th>
+        <th >Rol</th>
         <th>Estado</th>
         <th>Movimientos</th>
+    <th></th>
+    <th></th>
+
         <th>Editar</th>
         <th>Eliminar</th>
+        
     </tr>
 
     <!--Llenamos la tabla dibujada-->
@@ -55,12 +137,13 @@
         <td><button type="button" class="btn btn-danger"><a th:href="@{/EliminarEmpleado/{id}(id=${empleado.id})}">Eliminar</a></button></td>
     </tr>
 </table>
-
+</div>
     <!-- vamos a crear un boton que sirva para agregar nuevos empleados -->
     <button type="button" class="btn btn-info"><a th:href="@{/AgregarEmpleado}">Agregar Nuevo Empleado</a></button>
     <br><br>
     <!-- boton que me lleva a la lista de empresas -->
     <button type="button" class="btn btn-primary"><a th:href="@{/VerEmpresas}">Ver lista de Empresas</a></button>
+   
 </div>
 
 <script th:inline="javascript">
@@ -90,6 +173,8 @@
     }
 
 </script>
-
+<div class="footer-logo">
+    <img src="https://danm-art.com/wp-content/uploads/2022/09/Logo_404.png" alt="logo" class="logo-image">
+  </div>
 </body>
 </html>
