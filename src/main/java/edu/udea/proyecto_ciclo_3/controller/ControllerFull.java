@@ -189,6 +189,7 @@ public class ControllerFull {
         String correo=auth.getName();
         Integer idEmpleado=movimientosService.IdPorCorreo(correo);
         model.addAttribute("idEmpleado",idEmpleado);
+        System.out.println(idEmpleado);
         return "agregarMovimiento"; //Llamar HTML
     }
 
